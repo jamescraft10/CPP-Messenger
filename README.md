@@ -31,3 +31,5 @@ we can send a fetch to another example path (api/send/chat) to send the latest m
 when a post req is sent to an example path (api/chat.json) we send the response for the client to do the work
 when a client sends a request to another example path (api/send/chat) we flip the current changed bit and replace the data with whats sent
 after that the client should handle the rest.
+
+also dont use the file system during this only use it to save msgs when you get there
