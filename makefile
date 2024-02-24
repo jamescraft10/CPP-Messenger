@@ -3,4 +3,4 @@ all: build
 	rm server
 
 build:
-	g++ -o server src/server.cpp
+	g++ -o server src/server.cpp -O3
