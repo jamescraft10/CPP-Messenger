@@ -6,7 +6,8 @@
 #include <netinet/ip.h>
 #include <netinet/ip.h>
 
-#include <src/request.hpp>
+#include "request.hpp"
+#include "response.hpp"
 
 #define BUFFER_SIZE 1024
 #define PORT 3000
@@ -30,7 +31,7 @@ int main(int argc, char *argv[]) {
 
     // bind
     if(0 > bind(sfd, (struct sockaddr*)&server_info, server_info_len)) {
-        std::cerr << "Bind failed.\n";
+        std::cerr << "Bind failed.\nTry changing the port.\n";
         exit(-1);
     }
 
@@ -41,11 +42,9 @@ int main(int argc, char *argv[]) {
     }
 
     // server loop
-    std::string username = getlogin();
     std::cout << "Server is running on\n"
               << "\thttp://localhost:" << PORT << "/\n"
               << "\thttp://127.0.0.1:" << PORT << "/\n"
-              << "\thttp://" << username << ":" << PORT << "/\n"
               << "\thttp://example.com:" << PORT << "/\n";
     while(true) {
         // accept
@@ -57,12 +56,12 @@ int main(int argc, char *argv[]) {
 
         // request
         request req(cfd, BUFFER_SIZE);
-        // response
-        ssize_t sent = send(cfd, (void*)"Hello, World!", strlen("Hello, World!"), 0);
+        response res(req.path);
+        std::cout << "Request: " << req.path << "\t" << req.type << "\t\nResponse: " << res.file_code << "\t" << res.file_size << "\t" << res.http_code << "\t" << res.http_type << "\n\n";
+        ssize_t sent = send(cfd, (void*)res.http_response.c_str(), strlen(res.http_response.c_str()), 0);
         
         // clean up
         close(cfd);
-
     }
     
     return 0;

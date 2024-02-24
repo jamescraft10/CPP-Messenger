@@ -1,0 +1,17 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: monospace;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+.Title {
+    font-size: xx-large;
+}
+
+.Text {
+    font-size: large;
+}
