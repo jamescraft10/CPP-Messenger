@@ -6,8 +6,8 @@
 #include <netinet/ip.h>
 #include <netinet/ip.h>
 
-#include "request.hpp"
-#include "response.hpp"
+#include "request.h"
+#include "response.h"
 
 #define BUFFER_SIZE 1024
 #define PORT 3000
