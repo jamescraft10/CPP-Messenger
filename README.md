@@ -1,19 +1,7 @@
 # C++ Server
 
 TODO:
-theres a bug that looks like this and idk where its coming from
-```
-jamescraft@James:~/Programming/CPP-Server$ make
-g++ -o server src/server.cpp
-./server
-Server is running on
-        http://localhost:3002/
-        http://127.0.0.1:3002/
-        http://example.com:3002/
-terminate called after throwing an instance of 'std::out_of_range'
-  what():  basic_string::substr: __pos (which is 18446744073709551611) > this->size() (which is 0)
-make: *** [makefile:2: all] Aborted
-```
+do the socket io thing;
 
 ## what this does
 so the code is going to served on a port which is connected to and our server (server.cpp) is going to have a api so with fetch and js on the front end then can be a libary thats going to be used as a replacement for socket io
@@ -32,4 +20,16 @@ when a post req is sent to an example path (api/chat.json) we send the response 
 when a client sends a request to another example path (api/send/chat) we flip the current changed bit and replace the data with whats sent
 after that the client should handle the rest.
 
-also dont use the file system during this only use it to save msgs when you get there
+for the server theres going to be a file thats edited to a json when it gets responsed and its going to store the data of chat.json
+its going to be called chat.data and its going to look like this
+```
+message0
+```
+so its going to be read like this
+```cpp
+// data is chat.data's data
+// we keep everything as a string so its easyier to responsed
+char state = data[data.length()-1];
+data.pop_back();
+std::string msg = data;
+```
