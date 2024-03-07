@@ -21,13 +21,12 @@ let start = async function() {
 
     currentData = await currentData.json();
     let message = currentData.msg;
-    message.replace(/%20/g, " ");
 
     data.msg = message;
     data.state = currentData.state;
 
     const messageHTML = document.createElement('li');
-    messageHTML.innerText = message;
+    messageHTML.innerText = message.replace(/%20/g, " ");
     document.querySelector('ul').append(messageHTML);
 }
 
@@ -37,7 +36,6 @@ let update = async function() {
     });
     currentData = await currentData.json();
     let message = currentData.msg;
-    message.replace(/%20/g, " ");
 
     if(data.state == currentData.state) { return; }
 
@@ -45,7 +43,7 @@ let update = async function() {
     data.state = currentData.state;
 
     const messageHTML = document.createElement('li');
-    messageHTML.innerText = message;
+    messageHTML.innerText = message.replace(/%20/g, " ");
     document.querySelector('ul').append(messageHTML);
 }
 
