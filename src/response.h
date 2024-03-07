@@ -84,8 +84,8 @@ class response {
                 std::string data = read_file("./data/chat.data");
                 std::string json_response;
                 char state = data[data.length()-2];
-                data.pop_back();
                 std::string msg = data;
+                msg.erase(msg.length()-2, msg.length()-2);
                 json_response = "{\"msg\":\""+msg+"\",\"state\":"+state+"}";
 
                 this->http_code = "200 OK";

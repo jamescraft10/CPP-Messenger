@@ -10,7 +10,7 @@
 #include "response.h"
 
 #define BUFFER_SIZE 1024
-#define PORT 8080
+#define PORT 3000
 
 int main(int argc, char *argv[]) {
     struct sockaddr_in server_info = {0};
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
         if(req.path[req.path.length()-1] == '?' || (req.path[req.path.length()-1] == '/' && req.path != "/")) { req.path.pop_back(); }
         
         response res(req.path, req.type);
-        std::cout << "Request: " << req.path << "\t" << req.type << "\t\nResponse: " << res.file_code << "\t" << res.file_size << "\t" << res.http_code << "\t" << res.http_type << "\n\n";
+        // std::cout << "Request: " << req.path << "\t" << req.type << "\t\nResponse: " << res.file_code << "\t" << res.file_size << "\t" << res.http_code << "\t" << res.http_type << "\n\n";
         ssize_t sent = send(cfd, (void*)res.http_response.c_str(), strlen(res.http_response.c_str()), 0);
         // clean up
         close(cfd);

@@ -7,6 +7,7 @@ do the socket io thing;
 so the code is going to served on a port which is connected to and our server (server.cpp) is going to have a api so with fetch and js on the front end then can be a libary thats going to be used as a replacement for socket io
 
 ## socket io thing:
+### socket io thing is done now i make it real time msging app
 
 ### client:
 every second check for fetch at an example path (api/chat.json) w/post
