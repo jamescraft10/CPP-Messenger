@@ -20,8 +20,8 @@ let start = async function() {
     });
 
     currentData = await currentData.json();
-    
-    const message = currentData.msg;
+    let message = currentData.msg;
+    message.replace(/%20/g, " ");
 
     data.msg = message;
     data.state = currentData.state;
@@ -36,8 +36,8 @@ let update = async function() {
         method: "GET"
     });
     currentData = await currentData.json();
-
-    const message = currentData.msg;
+    let message = currentData.msg;
+    message.replace(/%20/g, " ");
 
     if(data.state == currentData.state) { return; }
 
