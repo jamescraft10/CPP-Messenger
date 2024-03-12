@@ -25,7 +25,7 @@ std::string read_file(std::string path) {
     std::ifstream File(path);
     if(File.is_open()) {
         while(getline(File, line)) {
-            text += line+"\n";
+            text += line;
         }
         File.close();
     } else {
@@ -83,9 +83,9 @@ class response {
             } else if(path == "/api/chat.json") {
                 std::string data = read_file("./data/chat.data");
                 std::string json_response;
-                char state = data[data.length()-2];
+                char state = data[data.length()-1];
                 std::string msg = data;
-                msg.erase(msg.length()-2, msg.length()-2);
+                msg.erase(msg.length()-1, msg.length()-1);
                 json_response = "{\"msg\":\""+msg+"\",\"state\":"+state+"}";
 
                 this->http_code = "200 OK";
