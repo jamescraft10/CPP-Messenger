@@ -9,7 +9,7 @@ std::string read_file_public(std::string path1) {
     std::ifstream File(path);
     if(File.is_open()) {
         while(getline(File, line)) {
-            text += line+"\n";
+            text += line;
         }
         File.close();
     } else {
@@ -95,7 +95,7 @@ class response {
                 std::string data = path;
                 data.erase(0,14);
                 std::string file_data = read_file("./data/chat.data");
-                char state = file_data[file_data.length()-2];
+                char state = file_data[file_data.length()-1];
                 std::cout << state << "\n";
                 if(state == '0') { state = '1'; } else { state = '0'; }
                 data += state;
