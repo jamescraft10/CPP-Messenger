@@ -35,7 +35,7 @@ let update = async function() {
         method: "GET"
     });
     currentData = await currentData.json();
-    let message = currentData.msg;
+    let message = await currentData.msg;
 
     if(data.state == currentData.state) { return; }
 

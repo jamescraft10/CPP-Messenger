@@ -96,11 +96,11 @@ class response {
                 data.erase(0,14);
                 std::string file_data = read_file("./data/chat.data");
                 char state = file_data[file_data.length()-1];
-                std::cout << state << "\n";
                 if(state == '0') { state = '1'; } else { state = '0'; }
                 data += state;
-                std::cout << data << "\n";
                 write_file("./data/chat.data", data);
+		data.erase(data.length()-1,data.length()-1);
+		std::cout << data << "\n";
 
                 this->http_code = "200 OK";
                 this->http_type = "text/plain";
