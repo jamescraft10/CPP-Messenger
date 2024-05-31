@@ -43,8 +43,7 @@ let update = async function() {
     data.state = currentData.state;
 
     const messageHTML = document.createElement('li');
-    messageHTML.innerText = message.replace(/%20/g, " ");
-    document.querySelector('ul').append(messageHTML);
+    document.querySelector('ul').append(decodeURI(messageHTML));
 }
 
 start();
