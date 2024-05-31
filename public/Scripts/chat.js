@@ -43,6 +43,7 @@ let update = async function() {
     data.state = currentData.state;
 
     const messageHTML = document.createElement('li');
+    messageHTML.innerText = message;
     document.querySelector('ul').append(decodeURIComponent(messageHTML));
 }
 
